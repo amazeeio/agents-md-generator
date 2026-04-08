@@ -1,8 +1,8 @@
 # Security-focused AGENTS.md Generator
 
-Generate tailored security instructions for your [AGENTS.md](https://agents.md/) based on your project's technology stack.
+Generate security instructions for your [AGENTS.md](https://agents.md/) based on your project's technology stack.
 
-These instructions should be used as a starting point only. Please edit them as required for your project/taste.
+The instructions this tool generates should be used as a starting template only. Please tailor to your project/taste.
 
 All credit for the content goes to the [Best Practices for OSS Developers working group](https://github.com/ossf/wg-best-practices-os-developers).
 
