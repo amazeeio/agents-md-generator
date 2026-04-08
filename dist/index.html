@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Security-focused AGENTS.md Generator</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <style>
         :root {
             --bg: #ececec;
@@ -56,6 +57,18 @@
         button { background-color: var(--bg); color: var(--fg); border: 2px solid var(--border); font-family: var(--font); padding: 5px 15px; cursor: pointer; text-transform: uppercase; font-weight: bold; }
         button:hover { background-color: var(--fg); color: var(--bg); }
         input[type="checkbox"] { accent-color: var(--accent); }
+
+        .github-icon { vertical-align: middle; }
+        .github-light { display: none; }
+        .github-dark { display: block; }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) .github-light { display: inline-block; }
+            :root:not([data-theme="light"]) .github-dark { display: none; }
+        }
+        :root[data-theme="dark"] .github-light { display: inline-block; }
+        :root[data-theme="dark"] .github-dark { display: none; }
+        :root[data-theme="light"] .github-light { display: none; }
+        :root[data-theme="light"] .github-dark { display: inline-block; }
     </style>
     <script src="wasm_exec.js"></script>
     <script>
@@ -69,7 +82,13 @@
 <body>
     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
         <h1>Security-focused AGENTS.md Generator</h1>
-        <button type="button" id="theme-toggle"></button>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <a href="https://github.com/amazeeio/agents-md-generator" target="_blank" rel="noopener" title="View on GitHub">
+                <img src="github-dark.svg" alt="GitHub" width="24" height="24" class="github-icon github-dark">
+                <img src="github-light.svg" alt="GitHub" width="24" height="24" class="github-icon github-light">
+            </a>
+            <button type="button" id="theme-toggle"></button>
+        </div>
     </div>
     <fieldset id="tags-fieldset">
         <legend>Select Architecture</legend>
@@ -79,7 +98,7 @@
         <button type="button" id="copy-btn">Copy</button>
         <button type="button" id="download-btn">Download</button>
     </div>
-    <p style="margin: 0;">All content from the OpenSSF's <a href="https://best.openssf.org/Security-Focused-Guide-for-AI-Code-Assistant-Instructions">Security-Focused Guide for AI Code Assistant Instructions</a>.</p>
+		<p style="margin: 0;">All content from the OpenSSF's <a href="https://best.openssf.org/Security-Focused-Guide-for-AI-Code-Assistant-Instructions">Security-Focused Guide for AI Code Assistant Instructions</a> and licenced under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
     <div class="logo-container">
         <a href="https://amazee.ai" target="_blank" rel="noopener">
             <img src="amazee-ai-Logo-Black.svg" class="logo-dark" alt="Amazee AI">
