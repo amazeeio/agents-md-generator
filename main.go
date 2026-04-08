@@ -78,7 +78,6 @@ func generateMarkdown(this js.Value, args []js.Value) any {
 
 	var markdown strings.Builder
 	markdown.WriteString("## Security Instructions\n\n")
-	markdown.WriteString("Adhere to the following security guidelines.\n\n")
 
 	type instructionMatch struct {
 		text string
