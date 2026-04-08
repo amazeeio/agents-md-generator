@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Security-focused AGENTS.md Generator</title>
+    <style>
+        :root {
+            --bg: #ececec;
+            --fg: #000000;
+            --accent: #0000aa;
+            --border: #888888;
+            --font: 'Courier New', Courier, monospace;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg: #121212;
+                --fg: #d4d4d4;
+                --accent: #4ade80;
+                --border: #555555;
+            }
+        }
+        :root[data-theme="dark"] {
+            --bg: #121212;
+            --fg: #d4d4d4;
+            --accent: #4ade80;
+            --border: #555555;
+        }
+        :root[data-theme="light"] {
+            --bg: #ececec;
+            --fg: #000000;
+            --accent: #0000aa;
+            --border: #888888;
+        }
+        .logo-container { position: fixed; bottom: 1rem; right: 1rem; width: 150px; z-index: 100; }
+        .logo-container img { width: 100%; height: auto; }
+        .logo-light { display: none; }
+        .logo-dark { display: block; }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) .logo-light { display: block; }
+            :root:not([data-theme="light"]) .logo-dark { display: none; }
+        }
+        :root[data-theme="dark"] .logo-light { display: block; }
+        :root[data-theme="dark"] .logo-dark { display: none; }
+        :root[data-theme="light"] .logo-light { display: none; }
+        :root[data-theme="light"] .logo-dark { display: block; }
+        * { box-sizing: border-box; }
+        body { background-color: var(--bg); color: var(--fg); font-family: var(--font); max-width: 800px; margin: 2rem auto; display: flex; flex-direction: column; height: calc(100vh - 4rem); }
+        h1 { margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+        a { color: var(--accent); }
+        textarea { background-color: var(--bg); color: var(--fg); border: 2px solid var(--border); width: 100%; flex-grow: 1; margin-bottom: 1rem; font-family: var(--font); padding: 0.5rem; resize: none; }
+        textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 5px var(--accent); }
+        fieldset { border: 2px solid var(--border); margin: 0 0 1rem 0; width: 100%; }
+        #tags-fieldset { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+        #tags-fieldset legend { grid-column: 1 / -1; background-color: var(--bg); padding: 0 5px; }
+        p { font-size: 0.8rem; }
+        button { background-color: var(--bg); color: var(--fg); border: 2px solid var(--border); font-family: var(--font); padding: 5px 15px; cursor: pointer; text-transform: uppercase; font-weight: bold; }
+        button:hover { background-color: var(--fg); color: var(--bg); }
+        input[type="checkbox"] { accent-color: var(--accent); }
+    </style>
+    <script src="wasm_exec.js"></script>
+    <script>
+        // initialize and stream the wasm binary
+        const go = new Go();
+        WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
+            go.run(result.instance);
+        });
+    </script>
+</head>
+<body>
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+        <h1>Security-focused AGENTS.md Generator</h1>
+        <button type="button" id="theme-toggle"></button>
+    </div>
+    <fieldset id="tags-fieldset">
+        <legend>Select Architecture</legend>
+    </fieldset>
+    <textarea id="output-markdown" placeholder="Your generated AGENTS.md will appear here..." readonly></textarea>
+    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+        <button type="button" id="copy-btn">Copy</button>
+        <button type="button" id="download-btn">Download</button>
+    </div>
+    <p style="margin: 0;">All content from the OpenSSF's <a href="https://best.openssf.org/Security-Focused-Guide-for-AI-Code-Assistant-Instructions">Security-Focused Guide for AI Code Assistant Instructions</a>.</p>
+    <div class="logo-container">
+        <a href="https://amazee.ai" target="_blank" rel="noopener">
+            <img src="amazee-ai-Logo-Black.svg" class="logo-dark" alt="Amazee AI">
+            <img src="amazee-ai-Logo-White.svg" class="logo-light" alt="Amazee AI">
+        </a>
+    </div>
+</body>
+</html>
